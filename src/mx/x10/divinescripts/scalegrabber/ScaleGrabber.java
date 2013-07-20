@@ -35,17 +35,15 @@ public class ScaleGrabber extends ActiveScript implements PaintListener{
 
 	//Script vars
 	private ArrayList<Strategy> strategies = new ArrayList<Strategy>();
-	private long startTime;
 	private Timer timer;
-	private long timeRunning;
-	private int scalePrice, secsRunning, mph, profit, minsRunning, hoursRunning;
-	public static int scalesInInv, scalesTotal;
+	private int scalePrice, mph, profit;
+	public static int  scalesTotal;
+	private int scalesInInv;
 	private float sph;
 	private String currentState = "Starting up...";
 	
 	public void onStart() {
 		timer = new Timer(1000);
-		startTime = System.currentTimeMillis();
 		scalePrice = 1100; //will make it dynamic later.
 		addStrategies(new OpenActionBar(), new TeleToTaverly(),new WalkToBank(),
 				new OpenBank(), new BankScales(), new CloseBank(), new WalkToTunnel(), 
@@ -72,18 +70,15 @@ public class ScaleGrabber extends ActiveScript implements PaintListener{
 
 	@Override
 	public void onRepaint(Graphics g) {
-		timeRunning = System.currentTimeMillis() - startTime;
-		secsRunning = (int) (timeRunning / 1000);
 		scalesInInv = Inventory.getCount(Constants.SCALE_ID);
 		profit = (scalesTotal + scalesInInv) * scalePrice;
 		
 		if(profit > 0) {
-			mph = (profit / secsRunning) * 60 * 60;
-			
+			mph = (profit / (int)(timer.getElapsed()/1000)) * 60 * 60;
 		}
 		
 		if((scalesTotal + scalesInInv) > 0) {
-			sph = (float)((scalesTotal + scalesInInv) / secsRunning);
+			sph = ((float)(scalesTotal + scalesInInv) / (float)(timer.getElapsed()/1000)) * 60 * 60;
 		}
 		
 		g.setColor(Color.BLACK);
@@ -94,7 +89,7 @@ public class ScaleGrabber extends ActiveScript implements PaintListener{
 		g.drawString("$ P/H: " + (NumberFormat.getNumberInstance(Locale.US).format(mph)), 30, 460);
 		g.drawString("State: " + currentState, 30, 490);
 		g.drawString("Scales Collected: " + (scalesTotal + scalesInInv), 285, 430);
-		g.drawString("Scales P/H: " + (sph), 285, 460);
+		g.drawString("Scales P/H: " + NumberFormat.getNumberInstance(Locale.US).format((int)sph), 285, 460);
 	}
 	
 }

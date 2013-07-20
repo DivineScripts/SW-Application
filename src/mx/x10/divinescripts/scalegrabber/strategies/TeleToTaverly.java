@@ -7,30 +7,27 @@ import org.powerbot.core.script.job.Task;
 import org.powerbot.game.api.methods.Widgets;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
-
-import sk.action.ActionBar;
-
+import org.powerbot.game.api.util.Timer;
 
 public class TeleToTaverly implements Strategy {
 
+	Timer t;
 	@Override
 	public boolean isValid() {
 		return Constants.DRAG_AREA.contains(Players.getLocal())
-				&& Players.getLocal().getAnimation() != 16385
-				&& Inventory.isFull() && !Players.getLocal().isInCombat();
+				&& Players.getLocal().getAnimation() == -1
+				&& Inventory.isFull() && !Players.getLocal().isInCombat() 
+				&& Widgets.get(Constants.LODESTONE_PARENT_ID).validate();
 	}
 
 	@Override
 	public void execute() {
-		if (Widgets.get(Constants.LODESTONE_PARENT_ID)
-				.getChild(Constants.TAVERLY_TELE_ID).validate()) {
+			t = new Timer(3000);
 			Widgets.get(Constants.LODESTONE_PARENT_ID)
 					.getChild(Constants.TAVERLY_TELE_ID).click(true);
-			Task.sleep(2000, 2500);
-		} else {
-			ActionBar.getNode(1).use();
-			Task.sleep(1500, 2000);
-		}
+			while(t.isRunning()) {
+				Task.sleep(40);
+			}
 	}
 
 	@Override

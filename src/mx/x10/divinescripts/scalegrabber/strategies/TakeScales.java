@@ -9,7 +9,6 @@ import org.powerbot.game.api.methods.node.GroundItems;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.wrappers.node.GroundItem;
 
-
 public class TakeScales implements Strategy {
 
 	GroundItem scale;
@@ -17,21 +16,20 @@ public class TakeScales implements Strategy {
 	@Override
 	public boolean isValid() {
 		return !Inventory.isFull()
+				&& (scale = GroundItems.getNearest(Constants.SCALE_ID)) != null
 				&& Constants.DRAG_AREA.contains(Players.getLocal())
-				&& !Players.getLocal().isMoving() && !Players.getLocal().isInCombat();
+				&& !Players.getLocal().isMoving()
+				&& !Players.getLocal().isInCombat();
 	}
 
 	@Override
 	public void execute() {
 		scale = GroundItems.getNearest(Constants.SCALE_ID);
-		if (scale != null) {
 			if (scale.isOnScreen()) {
 				scale.interact("Take");
 			} else {
 				Walking.walk(scale);
 			}
-		}
-
 	}
 
 	@Override
