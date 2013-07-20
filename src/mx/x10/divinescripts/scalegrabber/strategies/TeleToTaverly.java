@@ -28,7 +28,7 @@ public class TeleToTaverly implements Strategy {
 					.getChild(Constants.TAVERLY_TELE_ID).click(true);
 			Task.sleep(2000, 2500);
 		} else {
-			ActionBar.sendKey(0);
+			ActionBar.getNode(1).use();
 			Task.sleep(1500, 2000);
 		}
 	}
