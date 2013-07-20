@@ -86,10 +86,11 @@ public class ScaleGrabber extends ActiveScript implements PaintListener{
 		g.setColor(Color.LIGHT_GRAY);
 		g.setFont(new Font("Arial", 0, 20));
 		g.drawString("Time Elapsed: " + timer.toElapsedString(), 30, 430);
-		g.drawString("$ P/H: " + (NumberFormat.getNumberInstance(Locale.US).format(mph)), 30, 460);
+		g.drawString("P/H: $" + (NumberFormat.getNumberInstance(Locale.US).format(mph)), 30, 460);
 		g.drawString("State: " + currentState, 30, 490);
 		g.drawString("Scales Collected: " + (scalesTotal + scalesInInv), 285, 430);
 		g.drawString("Scales P/H: " + NumberFormat.getNumberInstance(Locale.US).format((int)sph), 285, 460);
+		g.drawString("Profit: $" + NumberFormat.getNumberInstance(Locale.US).format(profit), 285, 490);
 	}
 	
 }
