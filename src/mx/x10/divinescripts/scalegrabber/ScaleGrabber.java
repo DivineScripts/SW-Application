@@ -30,18 +30,16 @@ import org.powerbot.game.api.util.Timer;
 
 @Manifest(authors = { "DivineScripts" }, description = "Test Script for SW", name = "Test Script")
 public class ScaleGrabber extends ActiveScript implements PaintListener{
+	
 	private static final int SCALE_PRICE = 1100;
 	public static int scalesTotal;
-
 	private final Timer timer = new Timer(0);
-	
 	private static final NumberFormat NUM_FORMAT = new DecimalFormat("###,###,###");
-	//Script vars
-	Strategy[] strategies = {new OpenActionBar(), new TeleToTaverly(),new WalkToBank(),
+	
+	private final Strategy[] strategies = {new OpenActionBar(), new TeleToTaverly(),new WalkToBank(),
 			new OpenBank(), new BankScales(), new CloseBank(), new WalkToTunnel(), 
 			new GoInTunnel(), new NavigateShortcut(),new SafeSpot(), new Antiban(), 
 			new TakeScales()};
-	
 	private String currentState = "Starting up...";
 	
 	@Override
