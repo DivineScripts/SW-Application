@@ -4,6 +4,7 @@ import mx.x10.divinescripts.scalegrabber.utils.Strategy;
 
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
+import org.powerbot.game.api.methods.widget.Bank;
 
 import sk.action.ActionBar;
 
@@ -13,7 +14,8 @@ public class WalkToBank implements Strategy {
 	public boolean isValid() {
 		return Inventory.getCount(SCALE_ID) > 0
 				&& !DRAG_AREA.contains(Players.getLocal())
-				&& !Players.getLocal().isMoving();
+				&& !Players.getLocal().isMoving()
+				&& !Bank.isOpen();
 	}
 
 	@Override

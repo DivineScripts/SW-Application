@@ -7,12 +7,10 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import mx.x10.divinescripts.scalegrabber.strategies.Antiban;
-import mx.x10.divinescripts.scalegrabber.strategies.BankScales;
-import mx.x10.divinescripts.scalegrabber.strategies.CloseBank;
+import mx.x10.divinescripts.scalegrabber.strategies.Banking;
 import mx.x10.divinescripts.scalegrabber.strategies.GoInTunnel;
 import mx.x10.divinescripts.scalegrabber.strategies.NavigateShortcut;
 import mx.x10.divinescripts.scalegrabber.strategies.OpenActionBar;
-import mx.x10.divinescripts.scalegrabber.strategies.OpenBank;
 import mx.x10.divinescripts.scalegrabber.strategies.SafeSpot;
 import mx.x10.divinescripts.scalegrabber.strategies.TakeScales;
 import mx.x10.divinescripts.scalegrabber.strategies.TeleToTaverly;
@@ -28,7 +26,7 @@ import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Timer;
 
 
-@Manifest(authors = { "DivineScripts" }, description = "Test Script for SW", name = "Test Script")
+@Manifest(authors = { "DivineScripts" }, description = "Grabs scales", name = "Scale Grabber")
 public class ScaleGrabber extends ActiveScript implements PaintListener{
 	
 	private static final int SCALE_PRICE = 1100;
@@ -37,7 +35,7 @@ public class ScaleGrabber extends ActiveScript implements PaintListener{
 	private static final NumberFormat NUM_FORMAT = new DecimalFormat("###,###,###");
 	
 	private final Strategy[] strategies = {new OpenActionBar(), new TeleToTaverly(),new WalkToBank(),
-			new OpenBank(), new BankScales(), new CloseBank(), new WalkToTunnel(), 
+			new Banking(), new WalkToTunnel(), 
 			new GoInTunnel(), new NavigateShortcut(),new SafeSpot(), new Antiban(), 
 			new TakeScales()};
 	private String currentState = "Starting up...";
@@ -69,5 +67,6 @@ public class ScaleGrabber extends ActiveScript implements PaintListener{
 		g.drawString("State: " + currentState, 30, 490);
 		g.drawString("Scales Collected: " + NUM_FORMAT.format(currentScales), 285, 430);
 		g.drawString("Scales P/H: " + NUM_FORMAT.format(scalePerHour), 285, 460);
+		g.drawString("Profit: " + NUM_FORMAT.format(profit), 285, 490);
 	}
 }
