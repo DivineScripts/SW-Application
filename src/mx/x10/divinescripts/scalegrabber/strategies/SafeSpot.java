@@ -28,7 +28,7 @@ public class SafeSpot implements Strategy{
 
 	@Override
 	public String getState() {
-		return "Under Attack, failsafe activated";
+		return "failsafe activated";
 	}
 
 }
