@@ -1,6 +1,5 @@
 package mx.x10.divinescripts.scalegrabber.strategies;
 
-import mx.x10.divinescripts.scalegrabber.utils.Constants;
 import mx.x10.divinescripts.scalegrabber.utils.Strategy;
 
 import org.powerbot.game.api.methods.Widgets;
@@ -12,11 +11,12 @@ import sk.action.ActionBar;
 
 public class OpenActionBar implements Strategy {
 	
+	
 	@Override
 	public boolean isValid() {
-		return Constants.DRAG_AREA.contains(Players.getLocal())
-				&& Inventory.isFull() && !Widgets.get(Constants.LODESTONE_PARENT_ID)
-				.getChild(Constants.TAVERLY_TELE_ID).validate() && !Players.getLocal().isInCombat()
+		return DRAG_AREA.contains(Players.getLocal())
+				&& Inventory.isFull() && !Widgets.get(LODESTONE_PARENT_ID)
+				.getChild(TAVERLY_TELE_ID).validate() && !Players.getLocal().isInCombat()
 				&& Players.getLocal().getAnimation() == -1;
 	}
 

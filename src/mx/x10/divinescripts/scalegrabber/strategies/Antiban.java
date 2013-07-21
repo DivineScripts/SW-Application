@@ -7,7 +7,8 @@ import org.powerbot.game.api.util.Random;
 
 
 public class Antiban implements Strategy{
-	int random;
+	private int random;
+	
 	@Override
 	public boolean isValid() {
 		return (random = Random.nextInt(0, 70)) > 65; 

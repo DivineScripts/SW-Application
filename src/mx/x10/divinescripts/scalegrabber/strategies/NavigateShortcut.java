@@ -1,31 +1,28 @@
 package mx.x10.divinescripts.scalegrabber.strategies;
 
-import mx.x10.divinescripts.scalegrabber.utils.Constants;
 import mx.x10.divinescripts.scalegrabber.utils.Strategy;
 
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.node.SceneEntities;
 import org.powerbot.game.api.methods.widget.Camera;
-import org.powerbot.game.api.wrappers.node.SceneObject;
 
 
 public class NavigateShortcut implements Strategy {
 
-	SceneObject shortcut;
-	
+
 	@Override
 	public boolean isValid() {
-		return !Constants.DRAG_AREA.contains(Players.getLocal())
-				&& (shortcut = SceneEntities.getNearest(Constants.SHORTCUT_ID)) != null
+		return !DRAG_AREA.contains(Players.getLocal())
+				&& SceneEntities.getNearest(SHORTCUT_ID) != null
 				&& Players.getLocal().getAnimation() == -1;
 	}
 
 	@Override
 	public void execute() {
-		if(shortcut.isOnScreen()) {
-			shortcut.interact("Squeeze-through");
+		if(SceneEntities.getNearest(SHORTCUT_ID).isOnScreen()) {
+			SceneEntities.getNearest(SHORTCUT_ID).interact("Squeeze-through");
 		} else {
-			Camera.turnTo(shortcut);
+			Camera.turnTo(SceneEntities.getNearest(SHORTCUT_ID));
 		}
 	}
 

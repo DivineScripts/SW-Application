@@ -1,34 +1,30 @@
 package mx.x10.divinescripts.scalegrabber.strategies;
 
-import mx.x10.divinescripts.scalegrabber.utils.Constants;
 import mx.x10.divinescripts.scalegrabber.utils.Strategy;
 
 import org.powerbot.game.api.methods.Walking;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.node.GroundItems;
 import org.powerbot.game.api.methods.tab.Inventory;
-import org.powerbot.game.api.wrappers.node.GroundItem;
 
 public class TakeScales implements Strategy {
-
-	GroundItem scale;
 
 	@Override
 	public boolean isValid() {
 		return !Inventory.isFull()
-				&& (scale = GroundItems.getNearest(Constants.SCALE_ID)) != null
-				&& Constants.DRAG_AREA.contains(Players.getLocal())
+				&& GroundItems.getNearest(SCALE_ID) != null
+				&& DRAG_AREA.contains(Players.getLocal())
 				&& !Players.getLocal().isMoving()
 				&& !Players.getLocal().isInCombat();
 	}
 
 	@Override
 	public void execute() {
-		scale = GroundItems.getNearest(Constants.SCALE_ID);
-			if (scale.isOnScreen()) {
-				scale.interact("Take");
+		GroundItems.getNearest(SCALE_ID);
+			if (GroundItems.getNearest(SCALE_ID).isOnScreen()) {
+				GroundItems.getNearest(SCALE_ID).interact("Take");
 			} else {
-				Walking.walk(scale);
+				Walking.walk(GroundItems.getNearest(SCALE_ID));
 			}
 	}
 

@@ -1,6 +1,5 @@
 package mx.x10.divinescripts.scalegrabber.strategies;
 
-import mx.x10.divinescripts.scalegrabber.utils.Constants;
 import mx.x10.divinescripts.scalegrabber.utils.Strategy;
 
 import org.powerbot.game.api.methods.interactive.Players;
@@ -11,14 +10,14 @@ public class WalkToTunnel implements Strategy {
 
 	@Override
 	public boolean isValid() {
-		return Inventory.getCount(Constants.SCALE_ID) == 0
-				&& SceneEntities.getNearest(Constants.SHORTCUT_ID) == null
+		return Inventory.getCount(SCALE_ID) == 0
+				&& SceneEntities.getNearest(SHORTCUT_ID) == null
 				&& !Players.getLocal().isMoving();
 	}
 
 	@Override
 	public void execute() {
-		Constants.PATH_TO_TUNNEL.traverse();
+		PATH_TO_TUNNEL.traverse();
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package mx.x10.divinescripts.scalegrabber.strategies;
 
 import mx.x10.divinescripts.scalegrabber.ScaleGrabber;
-import mx.x10.divinescripts.scalegrabber.utils.Constants;
 import mx.x10.divinescripts.scalegrabber.utils.Strategy;
 
 import org.powerbot.game.api.methods.tab.Inventory;
@@ -12,7 +11,7 @@ public class BankScales implements Strategy {
 
 	@Override
 	public boolean isValid() {
-		return Bank.isOpen() && Inventory.getCount(Constants.SCALE_ID) > 0;
+		return Bank.isOpen() && Inventory.getCount(SCALE_ID) > 0;
 	}
 
 	@Override

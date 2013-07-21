@@ -1,6 +1,5 @@
 package mx.x10.divinescripts.scalegrabber.strategies;
 
-import mx.x10.divinescripts.scalegrabber.utils.Constants;
 import mx.x10.divinescripts.scalegrabber.utils.Strategy;
 
 import org.powerbot.game.api.methods.interactive.Players;
@@ -12,8 +11,8 @@ public class WalkToBank implements Strategy {
 
 	@Override
 	public boolean isValid() {
-		return Inventory.getCount(Constants.SCALE_ID) > 0
-				&& !Constants.DRAG_AREA.contains(Players.getLocal())
+		return Inventory.getCount(SCALE_ID) > 0
+				&& !DRAG_AREA.contains(Players.getLocal())
 				&& !Players.getLocal().isMoving();
 	}
 
@@ -22,7 +21,7 @@ public class WalkToBank implements Strategy {
 		if (ActionBar.isExpanded()) {
 			ActionBar.expand(false);
 		}
-		Constants.PATH_TO_BANK.traverse();
+		PATH_TO_BANK.traverse();
 	}
 
 	@Override

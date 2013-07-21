@@ -19,7 +19,6 @@ import mx.x10.divinescripts.scalegrabber.strategies.TakeScales;
 import mx.x10.divinescripts.scalegrabber.strategies.TeleToTaverly;
 import mx.x10.divinescripts.scalegrabber.strategies.WalkToBank;
 import mx.x10.divinescripts.scalegrabber.strategies.WalkToTunnel;
-import mx.x10.divinescripts.scalegrabber.utils.Constants;
 import mx.x10.divinescripts.scalegrabber.utils.Strategy;
 
 import org.powerbot.core.event.listeners.PaintListener;
@@ -70,7 +69,7 @@ public class ScaleGrabber extends ActiveScript implements PaintListener{
 
 	@Override
 	public void onRepaint(Graphics g) {
-		scalesInInv = Inventory.getCount(Constants.SCALE_ID);
+		scalesInInv = Inventory.getCount();
 		profit = (scalesTotal + scalesInInv) * scalePrice;
 		
 		if(profit > 0) {
