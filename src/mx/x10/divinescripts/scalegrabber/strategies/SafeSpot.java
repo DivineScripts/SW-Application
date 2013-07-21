@@ -19,9 +19,9 @@ public class SafeSpot implements Strategy{
 
 	@Override
 	public void execute() {
-		t = new Timer(3000);
+		t = new Timer(5000);
 		Walking.walk(SAFE_SPOT);
-		while(t.isRunning() | Players.getLocal().isInCombat()) {
+		while(t.isRunning() && Players.getLocal().isInCombat()) {
 			Task.sleep(40);
 		}
 	}
