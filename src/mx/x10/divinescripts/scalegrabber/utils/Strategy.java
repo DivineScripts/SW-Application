@@ -15,7 +15,7 @@ public interface Strategy {
 	public static final int TAVERLY_TELE_ID = 50;
 	// Tiles & such
 	
-	public static final Tile SAFE_SPOT = new Tile(2892, 9786, 0);
+	public static final Tile SAFE_SPOT = new Tile(2893, 9788, 0);
 	public static final Tile DOWN_STAIRS = new Tile(2886, 9795, 0);
 	
 	public static final TilePath PATH_TO_BANK = new TilePath(new Tile[] {
