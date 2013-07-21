@@ -56,7 +56,7 @@ public class ScaleGrabber extends ActiveScript implements PaintListener{
 		final int currentScales = Inventory.getCount(Strategy.SCALE_ID) + scalesTotal;
 		final int profit = currentScales * SCALE_PRICE;
 		final int profitPerHour = (int) (profit * (3600000d / timer.getElapsed()));
-		final int scalePerHour = (int) currentScales * (3600000d / timer.getElapsed()));
+		final int scalePerHour = (int) (currentScales * (3600000d / timer.getElapsed()));
 
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 390, 517, 140);
