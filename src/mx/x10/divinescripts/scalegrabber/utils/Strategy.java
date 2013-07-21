@@ -16,6 +16,8 @@ public interface Strategy {
 	// Tiles & such
 	
 	public static final Tile SAFE_SPOT = new Tile(2892, 9786, 0);
+	public static final Tile DOWN_STAIRS = new Tile(2886, 9795, 0);
+	
 	public static final TilePath PATH_TO_BANK = new TilePath(new Tile[] {
 			new Tile(2878, 3442, 0), new Tile(2884, 3433, 0),
 			new Tile(2881, 3424, 0), new Tile(2876, 3416, 0) });
@@ -25,7 +27,7 @@ public interface Strategy {
 			new Tile(2897, 3415, 0), new Tile(2896, 3405, 0),
 			new Tile(2888, 3398, 0) });
 
-	public static final Area DRAG_AREA = new Area(new Tile(2890, 9812, 0), new Tile(2923, 9812, 0), new Tile(2923, 9784, 0), new Tile(2890, 9784, 0));
+	public static final Area DRAG_AREA = new Area(new Tile(2892, 9812, 0), new Tile(2923, 9812, 0), new Tile(2923, 9784, 0), new Tile(2892, 9784, 0));
 
 	public boolean isValid();
 	
