@@ -20,7 +20,6 @@ public class TakeScales implements Strategy {
 
 	@Override
 	public void execute() {
-		GroundItems.getNearest(SCALE_ID);
 			if (GroundItems.getNearest(SCALE_ID).isOnScreen()) {
 				GroundItems.getNearest(SCALE_ID).interact("Take");
 			} else {
